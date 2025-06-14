@@ -5,6 +5,7 @@ const config = JSON.parse(fs.readFileSync('makeconf.json', 'utf8'))
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const questions = Object.entries(config.config)
 const answers = {}
+
 ;(async () => {
   for (const [key, opts] of questions) {
     const question = `${opts.description || key}${opts.default ? ` (${opts.default})` : ''}: `
