@@ -1,4 +1,5 @@
-const next = require('@next/eslint-plugin-next')
+const next = require('@next/eslint-plugin-next');
+
 module.exports = [
   {
     languageOptions: {
@@ -9,20 +10,20 @@ module.exports = [
         ecmaFeatures: { jsx: true },
         requireConfigFile: false,
         babelOptions: {
-          plugins: ['@babel/plugin-syntax-jsx']
-        }
+          plugins: ['@babel/plugin-syntax-jsx'],
+        },
       },
-      globals: Object.fromEntries(
-        Object.entries({
-          ...require('globals').browser,
-          ...require('globals').node
-        }).map(([k, v]) => [k.trim(), v])
-      )
     },
+    globals: Object.fromEntries(
+      Object.entries({
+        ...require('globals').browser,
+        ...require('globals').node,
+      }).map(([k, v]) => [k.trim(), v])
+    ),
     ignores: ['**/node_modules/**', '**/.next/**', 'uploads'],
     plugins: {
       react: require('eslint-plugin-react'),
-      '@next/next': next
+      '@next/next': next,
     },
     rules: {
       ...next.configs.recommended.rules,
@@ -43,7 +44,7 @@ module.exports = [
       'jsx-quotes': [1, 'prefer-single'],
       semi: ['error', 'never'],
       'max-len': ['error', { code: 100 }],
-      'multiline-comment-style': ['error', 'starred-block']
-    }
-  }
-]
+      'multiline-comment-style': ['error', 'starred-block'],
+    },
+  },
+];
