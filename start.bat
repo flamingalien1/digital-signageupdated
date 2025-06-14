@@ -1,8 +1,8 @@
 @echo off
 if not exist node_modules (
-    npm install
+    call npm install
 )
 if not exist .env (
-    npm run setup
+    call npm run setup
 )
-cmd /c "npm run dev"
+call npm run dev

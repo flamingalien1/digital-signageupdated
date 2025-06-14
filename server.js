@@ -30,10 +30,7 @@ app
 
     // MongoDB
     mongoose.Promise = Promise
-    mongoose.connect(
-      Keys.MONGODB_URI,
-      { useNewUrlParser: true }
-    )
+    mongoose.connect(Keys.MONGODB_URI)
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error:'))
 
@@ -73,7 +70,7 @@ app
     server.use('/uploads', express.static('uploads'))
 
     // Next.js routes
-    server.all('/*all', (req, res) => {
+    server.all('*', (req, res) => {
       return handle(req, res)
     })
 
