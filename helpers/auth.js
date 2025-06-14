@@ -1,7 +1,7 @@
 import Router from 'next/router'
 import axios from 'axios'
 import React from 'react'
-import { parseCookies, setCookie, destroyCookie } from 'nookies'
+import { parseCookies, setCookie, destroyCookie } from './cookies'
 
 import { getDisplays } from '../actions/display'
 

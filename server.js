@@ -71,10 +71,9 @@ app
 
     /*
      * Next.js routes
-     * Express 5 requires a named parameter for wildcard routes
+     * Catch all requests and delegate to Next.js
      */
-    // Catch all requests and delegate to Next.js
-    server.all('/*', (req, res) => {
+    server.all('*', (req, res) => {
       return handle(req, res)
     })
 
