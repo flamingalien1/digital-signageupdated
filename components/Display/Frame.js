@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import Clock from 'react-live-clock'
+import LiveClock from '../LiveClock'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWifi } from '@fortawesome/free-solid-svg-icons'
 
@@ -24,11 +24,11 @@ class Frame extends React.Component {
               return (
                 <div className={type}>
                   {type == 'date' ? (
-                    <Clock ticking={true} format={'dddd, MMMM Do.'} />
+                    <LiveClock format={'dddd, MMMM Do.'} />
                   ) : type == 'connection' ? (
                     <FontAwesomeIcon className={'wifi'} icon={faWifi} />
                   ) : type == 'time' ? (
-                    <Clock ticking={true} format={'H:mm'} />
+                    <LiveClock format={'H:mm'} />
                   ) : (
                     ' '
                   )}
