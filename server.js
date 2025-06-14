@@ -69,8 +69,11 @@ app
     // Static routes
     server.use('/uploads', express.static('uploads'))
 
-    // Next.js routes
-    server.all('*', (req, res) => {
+    /*
+     * Next.js routes
+     * Express 5 requires an explicit path for wildcard routes
+     */
+    server.all('/*', (req, res) => {
       return handle(req, res)
     })
 
