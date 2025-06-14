@@ -73,7 +73,7 @@ app
     server.use('/uploads', express.static('uploads'))
 
     // Next.js routes
-    server.get('*', (req, res) => {
+    server.all('/*all', (req, res) => {
       return handle(req, res)
     })
 
@@ -83,7 +83,7 @@ app
     })
 
     // Socket.io
-    io = socketIo.listen(finalServer)
+    io = new socketIo.Server(finalServer)
   })
   .catch(ex => {
     console.error(ex.stack)

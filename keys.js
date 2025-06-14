@@ -1,4 +1,4 @@
-const boxen = require('boxen')
+const boxen = require('boxen').default
 const dotenv = process.env.ENVIRON !== 'HEROKU' ? require('dotenv').config() : { parsed: {} }
 
 if (dotenv.error) {

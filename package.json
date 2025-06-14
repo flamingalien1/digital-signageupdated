@@ -8,7 +8,7 @@
     "dev": "cross-env ENVIRON=DEV node server.js",
     "prod": "cross-env ENVIRON=PROD node server.js",
     "build": "next build",
-    "lint": "eslint --color ./ *.js",
+    "lint": "eslint .",
     "start": "node server.js",
     "test": "echo \"No test specified yet.\" && exit 0",
     "update": "git pull && npm i && npm run build",

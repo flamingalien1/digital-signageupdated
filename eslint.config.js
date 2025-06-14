@@ -1,3 +1,5 @@
+const next = require('@next/eslint-plugin-next');
+
 module.exports = [
   {
     languageOptions: {
@@ -18,11 +20,13 @@ module.exports = [
         ...require('globals').node,
       }).map(([k, v]) => [k.trim(), v])
     ),
+    ignores: ['**/node_modules/**', '**/.next/**', 'uploads'],
     plugins: {
       react: require('eslint-plugin-react'),
-      '@next/next': require('next').configs.recommended.rules
+      '@next/next': next,
     },
     rules: {
+      ...next.configs.recommended.rules,
       camelcase: [2, { properties: 'always' }],
       'no-undef': 1,
       'global-strict': 0,
@@ -36,6 +40,11 @@ module.exports = [
       'no-alert': 0,
       'react/jsx-uses-react': 1,
       'react/jsx-uses-vars': 1,
+      quotes: [2, 'single', { avoidEscape: true }],
+      'jsx-quotes': [1, 'prefer-single'],
+      semi: ['error', 'never'],
+      'max-len': ['error', { code: 100 }],
+      'multiline-comment-style': ['error', 'starred-block'],
     },
   },
 ];
