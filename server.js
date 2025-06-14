@@ -1,4 +1,3 @@
-/* eslint-disable multiline-comment-style */
 const express = require('express')
 const next = require('next')
 const mongoose = require('mongoose')
@@ -12,8 +11,7 @@ const Keys = require('./keys')
 
 const dev = Keys.ENVIRON !== 'PROD'
 const app = next({ dev })
-const routes = require('./routes')
-const handle = routes.getRequestHandler(app)
+const handle = app.getRequestHandler()
 
 const apiRoutes = require('./api/routes')
 const User = require('./api/models/User')
@@ -32,10 +30,7 @@ app
 
     // MongoDB
     mongoose.Promise = Promise
-    mongoose.connect(
-      Keys.MONGODB_URI,
-      { useNewUrlParser: true }
-    )
+    mongoose.connect(Keys.MONGODB_URI)
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error:'))
 
@@ -74,22 +69,23 @@ app
     // Static routes
     server.use('/uploads', express.static('uploads'))
 
-    // Next.js routes
-    server.get('*', (req, res) => {
+    /*
+     * Next.js routes
+     * Express 5 requires an explicit path for wildcard routes
+     */
+    server.all('/*splat', (req, res) => {
       return handle(req, res)
     })
 
     const finalServer = server.listen(Keys.PORT, err => {
       if (err) throw err
-      // eslint-disable-next-line
-      console.log('> Ready on http://localhost:' + Keys.PORT)
+      console.warn('> Ready on http://localhost:' + Keys.PORT)
     })
 
     // Socket.io
-    io = socketIo.listen(finalServer)
+    io = new socketIo.Server(finalServer)
   })
   .catch(ex => {
-    // eslint-disable-next-line
     console.error(ex.stack)
     process.exit(1)
   })

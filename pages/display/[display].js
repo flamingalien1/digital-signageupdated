@@ -4,10 +4,10 @@
  */
 
 import React from 'react'
-import { view } from 'react-easy-state'
+import { view } from '@risingstack/react-easy-state'
 
-import Display from '../components/Display/Display.js'
-import { display } from '../stores'
+import Display from '../../components/Display/Display.js'
+import { display } from '../../stores'
 
 class DisplayPage extends React.Component {
   constructor(props) {
