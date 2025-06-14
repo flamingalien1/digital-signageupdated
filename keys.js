@@ -13,7 +13,9 @@ You have not configured your installation yet, please run the setup utility by e
 const PORT = process.env.PORT || dotenv.parsed.PORT || 3001
 const ENVIRON = process.env.ENVIRON || dotenv.parsed.ENVIRON || 'DEV'
 const MONGODB_URI =
-  process.env.MONGODB_URI || dotenv.parsed.MONGODB_URI || 'mongodb://localhost/display'
+  process.env.MONGODB_URI ||
+  dotenv.parsed.MONGODB_URI ||
+  'mongodb://localhost:27017/digitaldisplay'
 const SESSION_SECRET = process.env.SESSION_SECRET || dotenv.parsed.SESSION_SECRET
 const HOST_URL = process.env.SERVER_HOST || dotenv.parsed.SERVER_HOST || 'http://localhost:3000/'
 

@@ -73,7 +73,7 @@ app
      * Next.js routes
      * Express 5 requires an explicit path for wildcard routes
      */
-    server.all('/*', (req, res) => {
+    server.all('/*splat', (req, res) => {
       return handle(req, res)
     })
 
