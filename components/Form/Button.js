@@ -1,5 +1,6 @@
 import React from 'react'
-import Lottie from 'react-lottie'
+import Lottie from 'lottie-react'
+import loadingAnimation from './assets/loading.json'
 
 class Button extends React.Component {
   constructor(props) {
@@ -30,17 +31,10 @@ class Button extends React.Component {
       >
         {loading && (
           <Lottie
-            height={32}
-            width={32}
-            style={{ margin: 0 }}
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: require('./assets/loading.json'),
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice'
-              }
-            }}
+            animationData={loadingAnimation}
+            loop
+            autoplay
+            style={{ height: 32, width: 32, margin: 0 }}
           />
         )}
         {text}

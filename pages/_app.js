@@ -1,9 +1,12 @@
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import React from 'react'
+import { config } from '@fortawesome/fontawesome-svg-core'
 
 import '../styles/GridLayoutStyles.css'
 import 'react-resizable/css/styles.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+
+config.autoAddCss = false
 
 export default class NextApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -17,10 +20,6 @@ export default class NextApp extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
-    )
+    return <Component {...pageProps} />
   }
 }
