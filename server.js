@@ -73,7 +73,8 @@ app
      * Next.js routes
      * Express 5 requires a named parameter for wildcard routes
      */
-    server.all('/:path*', (req, res) => {
+    // Catch all requests and delegate to Next.js
+    server.all('/*', (req, res) => {
       return handle(req, res)
     })
 
