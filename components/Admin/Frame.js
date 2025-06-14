@@ -3,7 +3,7 @@
  * sidebar and content on the right)
  */
 
-import { view } from 'react-easy-state'
+import { view } from '@risingstack/react-easy-state'
 
 import Sidebar from './Sidebar'
 import { display } from '../../stores'

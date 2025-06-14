@@ -30,7 +30,6 @@ export default function HeightProvider(ComposedComponent, MeasureComponent, layo
 
     onWindowResize = () => {
       if (!this.mounted) return
-      // eslint-disable-next-line
       const node = ReactDOM.findDOMNode(MeasureComponent)
       if (node instanceof HTMLElement) {
         this.setState({ width: node.offsetWidth, height: node.offsetHeight })
