@@ -29,7 +29,6 @@ export default function WidthProvider(ComposedComponent) {
 
     onWindowResize = () => {
       if (!this.mounted) return
-      // eslint-disable-next-line
       const node = ReactDOM.findDOMNode(this) // Flow casts this to Text | Element
       if (node instanceof HTMLElement) this.setState({ width: node.offsetWidth })
     }

@@ -3,6 +3,7 @@
  */
 
 import Document, { Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 import { ServerStyleSheet } from 'styled-components'
 import flush from 'styled-jsx/server'
 
@@ -23,10 +24,16 @@ class AppDocument extends Document {
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta charSet='utf-8' />
           <link
-            href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
+            href={
+              'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' +
+              '&display=optional'
+            }
             rel='stylesheet'
           />
-          <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js' />
+          <Script
+            src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js'
+            strategy='beforeInteractive'
+          />
           {this.props.styleTags}
         </Head>
         <body>
