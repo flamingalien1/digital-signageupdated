@@ -3,6 +3,7 @@
  * along with its title and description.
  */
 
+/* eslint @next/next/no-img-element: 0 */
 import GenericSlide from './Generic'
 import React from 'react'
 

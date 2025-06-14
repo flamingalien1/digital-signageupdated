@@ -8,18 +8,19 @@ module.exports = [
         ecmaFeatures: { jsx: true },
         requireConfigFile: false,
         babelOptions: {
-          plugins: ['@babel/plugin-syntax-jsx']
-        }
+          plugins: ['@babel/plugin-syntax-jsx'],
+        },
       },
-      globals: Object.fromEntries(
-        Object.entries({
-          ...require('globals').browser,
-          ...require('globals').node
-        }).map(([k, v]) => [k.trim(), v])
-      )
     },
+    globals: Object.fromEntries(
+      Object.entries({
+        ...require('globals').browser,
+        ...require('globals').node,
+      }).map(([k, v]) => [k.trim(), v])
+    ),
     plugins: {
-      react: require('eslint-plugin-react')
+      react: require('eslint-plugin-react'),
+      '@next/next': require('next').configs.recommended.rules
     },
     rules: {
       camelcase: [2, { properties: 'always' }],
@@ -35,11 +36,6 @@ module.exports = [
       'no-alert': 0,
       'react/jsx-uses-react': 1,
       'react/jsx-uses-vars': 1,
-      quotes: [2, 'single', { avoidEscape: true }],
-      'jsx-quotes': [1, 'prefer-single'],
-      semi: ['error', 'never'],
-      'max-len': ['error', { code: 100 }],
-      'multiline-comment-style': ['error', 'starred-block']
-    }
-  }
-]
+    },
+  },
+];
