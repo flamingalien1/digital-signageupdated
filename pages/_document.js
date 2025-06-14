@@ -2,21 +2,38 @@
  * Overloads the _document container from Next.js in order to add custom fonts
  */
 
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script'
 import { ServerStyleSheet } from 'styled-components'
+import React from 'react'
 
 class AppDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
-    const styleTags = sheet.getStyleElement()
-    return { ...page, styleTags }
+    const originalRenderPage = ctx.renderPage
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: [
+          ...React.Children.toArray(initialProps.styles),
+          sheet.getStyleElement()
+        ]
+      }
+    } finally {
+      sheet.seal()
+    }
   }
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
           <style>{'body { margin: 0 } /* custom! */'}</style>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -38,7 +55,7 @@ class AppDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }
