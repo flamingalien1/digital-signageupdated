@@ -1,4 +1,4 @@
-const ReactEasyState = require('react-easy-state')
+const ReactEasyState = require('@risingstack/react-easy-state')
 const store = ReactEasyState.store
 const _ = require('lodash')
 const DisplayActions = require('../actions/display')

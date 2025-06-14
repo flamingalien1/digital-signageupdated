@@ -32,7 +32,6 @@ class YoutubeSlide extends GenericSlide {
    */
   renderSlideContent(data) {
     const { id, service } = getVideoId(data)
-    /* eslint-disable-next-line no-console */
     if (!id || service !== 'youtube') console.error('Failed to parse Youtube URL')
     return (
       <div className={'youtube-container'}>
