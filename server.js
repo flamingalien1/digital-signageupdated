@@ -75,7 +75,8 @@ app
      * Next.js routes
      * Catch all requests and delegate to Next.js
      */
-    server.all('*', (req, res) => {
+    // catch‑all route must start with a slash for Express
+    server.all('/*', (req, res) => {
       return handle(req, res)
     })
 
