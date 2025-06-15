@@ -1,13 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
+const mongoose = require('mongoose')
 const Display = require('../models/Display')
 const DisplayHelper = require('../helpers/display_helper')
 const CommonHelper = require('../helpers/common_helper')
+const mockDisplays = [
+  { _id: '1', name: 'Demo Display', layout: 'spaced', statusBar: [], widgets: [] }
+]
 
 // Route: /api/v1/display
 router
   .get('/', (req, res, next) => {
+    if (mongoose.connection.readyState !== 1) {
+      return res.json(mockDisplays)
+    }
     return Display.find({})
       .populate('widgets')
       .then(displays =>
@@ -35,6 +42,9 @@ router
 router
   .get('/:id', (req, res, next) => {
     const { id } = req.params
+    if (mongoose.connection.readyState !== 1) {
+      return res.json(mockDisplays.find(d => d._id === id))
+    }
     return Display.findById(id)
       .populate('widgets')
       .then(display => {
