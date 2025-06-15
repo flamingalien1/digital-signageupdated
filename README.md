@@ -34,7 +34,9 @@ npm run setup
 ```
 and specify the URI to your database.
 
-4. Install dependencies and run the program
+3. **Windows only:** run `start.bat` to install dependencies, generate `.env` and start the dev server.
+
+4. Install dependencies and run the program manually
 
 ```bash
 npm install
