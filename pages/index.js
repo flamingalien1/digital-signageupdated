@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
 import DropdownButton from '../components/DropdownButton'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 import { getDisplays } from '../actions/display'
 
@@ -41,7 +42,7 @@ class Index extends React.Component {
           </Link>
           <div style={{ margin: 20 }}>
             <DropdownButton
-              icon='chevron-down'
+              icon={faChevronDown}
               text='Display Home'
               style={styles.btn}
               onSelect={this.navigateToDisplay}

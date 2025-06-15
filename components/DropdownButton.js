@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library, config } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
 config.autoAddCss = false
-library.add(fas)
 library.add(fab)
+// only load the icon we actually use to reduce bundle size
+library.add(faChevronDown)
 
 class DropdownButton extends Component {
   constructor() {
