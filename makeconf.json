@@ -4,6 +4,7 @@
   "config": {
     "MONGODB_URI": {
       "description": "Your MongoDB URI (remote or local)",
+      "default": "mongodb://localhost:27017/digitaldisplay",
       "required": true
     },
     "PORT": {

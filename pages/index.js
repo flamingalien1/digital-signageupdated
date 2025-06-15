@@ -17,8 +17,13 @@ class Index extends React.Component {
   static async getInitialProps({ req }) {
     const host =
       req && req.headers && req.headers.host ? 'http://' + req.headers.host : window.location.origin
-    const displayList = await getDisplays(host)
-    return { displays: displayList, host: host }
+    let displayList = []
+    try {
+      displayList = await getDisplays(host)
+    } catch (err) {
+      console.error('Failed to fetch displays', err.message)
+    }
+    return { displays: displayList, host }
   }
 
   navigateToDisplay = id => {

@@ -32,7 +32,8 @@ Use the demo website at [http://digitaldisplay.herokuapp.com](http://digitaldisp
 ```bash
 npm run setup
 ```
-and specify the URI to your database.
+and follow the prompts. If you press Enter at each one, it will create `.env` with
+`MONGODB_URI` defaulting to `mongodb://localhost:27017/digitaldisplay`.
 
 3. **Windows only:** run `start.bat` to install dependencies, generate `.env` and start the dev server.
 
