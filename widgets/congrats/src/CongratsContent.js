@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react'
-import Lottie from 'react-lottie'
+import Lottie from 'lottie-react'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import AutoScroll from '../../../components/AutoScroll'
 

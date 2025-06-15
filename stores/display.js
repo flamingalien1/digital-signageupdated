@@ -2,7 +2,7 @@ const ReactEasyState = require('@risingstack/react-easy-state')
 const store = ReactEasyState.store
 const _ = require('lodash')
 const DisplayActions = require('../actions/display')
-const { nanoid } = require('nanoid')
+const { nanoid } = require('nanoid/non-secure')
 
 const updateDisplayThrottled = _.debounce((id, data) => {
   return DisplayActions.updateDisplay(id, data)
