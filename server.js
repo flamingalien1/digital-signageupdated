@@ -30,9 +30,11 @@ app
 
     // MongoDB
     mongoose.Promise = Promise
-    mongoose.connect(Keys.MONGODB_URI)
+    mongoose
+      .connect(Keys.MONGODB_URI)
+      .catch(err => console.warn('MongoDB connection failed:', err.message))
     const db = mongoose.connection
-    db.on('error', console.error.bind(console, 'connection error:'))
+    db.on('error', err => console.warn('connection error:', err.message))
 
     // Parse application/x-www-form-urlencoded
     server.use(bodyParser.urlencoded({ extended: false }))
